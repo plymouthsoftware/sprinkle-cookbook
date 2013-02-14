@@ -83,7 +83,12 @@ package :install_bundler do
   end
 end
 
+package :ruby_essentials do
+  apt 'libssl-dev zlib1g-dev'
+end
+
 package :ruby_rbenv do
+  requires :ruby_essentials
   requires :install_rubygems
   requires :install_bundler
 end
