@@ -9,14 +9,17 @@ package :make_sites_path do
   end
 end
 
-package :install_rails_dependencies do
-  description "Install libraries commonly required for rails development"
-  apt 'libsqlite3-dev'
+package :create_rails_mysql_user do
+  db_user "rails"
+  db_password "password"
+  db_name "app_development"
+
+  runner "mysql -uroot -e \"create database #{db_name}; grant all on #{db_name}.* to #{db_user}@localhost identified by '#{db_password}';\""
 end
 
 package :rails_development, :provides => :web_development do
   description 'Setup the box for web application development'
   
   requires :make_sites_path
-  requires :install_rails_dependencies
+  requires :create_rails_mysql_user
 end
