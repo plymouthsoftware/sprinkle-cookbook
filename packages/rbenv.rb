@@ -69,6 +69,21 @@ package :install_rubygems do
   end
 end
 
+package :install_bundler do
+  requires :use_rbenv
+  requires :install_rubygems
+
+  user fetch(:user)
+
+  runner "sudo -u #{user} -i gem install bundler --no-rdoc --no-ri"
+  runner "sudo -u #{user} -i rbenv rehash"
+  
+  verify do
+    has_executable "/home/#{user}/.rbenv/shims/bundle"
+  end
+end
+
 package :ruby_rbenv do
   requires :install_rubygems
+  requires :install_bundler
 end

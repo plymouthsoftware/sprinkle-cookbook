@@ -25,6 +25,7 @@ require "#{path}/packages/apache"
 require "#{path}/packages/rbenv"
 require "#{path}/packages/mysql"
 require "#{path}/packages/passenger_standalone"
+require "#{path}/packages/rails_development"
 
 # What we're installing to your server
 # Take what you want, leave what you don't
@@ -35,4 +36,6 @@ policy :stack, :roles => :app do
   requires :webserver                # Apache or Nginx
   requires :appserver                # Passenger (standalone)
   requires :database                 # MySQL or Postgres, also installs rubygems for each
+
+  requires :web_development          # Web Development (Rails)
 end
