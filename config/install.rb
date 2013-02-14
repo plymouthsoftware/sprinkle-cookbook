@@ -31,6 +31,8 @@ require "#{path}/packages/rails_development"
 # Take what you want, leave what you don't
 # Build up your own and strip down your server until you get it right. 
 policy :stack, :roles => :app do
+  # requires :apt_update             # For first run
+
   requires :essentials               # Standard utilities, build-essentials, git, etc.
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby
   requires :webserver                # Apache or Nginx

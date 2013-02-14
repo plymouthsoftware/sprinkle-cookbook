@@ -11,7 +11,6 @@ package :git do
 end
 
 package :bootstrap, :provides => :essentials do
-  requires :apt_update
   requires :remove_legacy_ruby
   requires :git
 end

@@ -4,6 +4,8 @@ package :passenger_standalone, :provides => :appserver do
 
   requires :use_rbenv
 
+  apt "libcurl4-openssl-dev"
+
   runner "sudo -u #{user} -i gem install passenger --no-ri --no-rdoc" do
     post :install, "sudo -u #{user} -i rbenv rehash"
   end
