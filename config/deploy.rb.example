@@ -1,0 +1,11 @@
+role :app, "hostname:ssh_port"
+
+# Fill user in - if remote user is different to your local user
+# set :user, 'vagrant'
+# set :password, 'vagrant'
+
+set :ruby_version, '1.9.3-p286'
+
+# Make capistrano variables accessible to Sprinkle
+# https://github.com/crafterm/sprinkle/issues/57
+Sprinkle::Package::Package.set_variables = self.variables
