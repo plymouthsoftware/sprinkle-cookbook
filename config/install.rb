@@ -26,6 +26,7 @@ require "#{path}/packages/rbenv"
 require "#{path}/packages/mysql"
 require "#{path}/packages/passenger_standalone"
 require "#{path}/packages/rails_development"
+require "#{path}/packages/memcache"
 
 # What we're installing to your server
 # Take what you want, leave what you don't
@@ -37,7 +38,7 @@ policy :stack, :roles => :app do
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby
   requires :webserver                # Apache or Nginx
   requires :appserver                # Passenger (standalone)
-  requires :database                 # MySQL or Postgres, also installs rubygems for each
-
+  requires :cache_server             # Local cache server, currently Memcache
   requires :web_development          # Web Development (Rails)
+  requires :database                 # MySQL or Postgres, also installs rubygems for each
 end
