@@ -2,7 +2,7 @@ package :install_memcached do
   user fetch(:user)
 
   apt "memcached" do
-    post :install, "sudo -u #{user} -i service start memcached"
+    post :install, "sudo -u #{user} -i service memcached start"
   end
 end
 
