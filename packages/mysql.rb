@@ -3,17 +3,16 @@ package :install_mysql do
   apt 'mysql-server mysql-client'
 
   verify do
-    has_executable "mysql"
+    has_executable "mysqladmin"
   end
 end
 
-package :install_mysql_ruby do
-  description 'Ruby MySQL database driver'
+# package :install_mysql_ruby do
+#   description 'Ruby MySQL database driver'
   
-  apt %w{libmysqlclient-dev libmysql-ruby}
-end
+#   apt %w{libmysqlclient-dev libmysql-ruby}
+# end
 
 package :mysql, :provides => :database do
   requires :install_mysql
-  requires :install_mysql_ruby
 end

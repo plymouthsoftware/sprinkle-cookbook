@@ -84,7 +84,7 @@ package :install_bundler do
 end
 
 package :ruby_essentials do
-  apt 'libssl-dev zlib1g-dev'
+  apt 'libssl-dev zlib1g zlib1g-dev libreadline-dev'
 end
 
 package :ruby_rbenv do
