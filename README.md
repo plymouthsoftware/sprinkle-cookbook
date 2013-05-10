@@ -1,10 +1,10 @@
 # Sprinkle Cookbook
 
-A set of recipes and configurations for configuring servers with Sprinkle.
+A set of recipes and configurations for configuring servers with [Sprinkle](https://github.com/crafterm/sprinkle).
 
 ## Installation
 
-To use with Vagrant, download and install Vagrant from http://www.vagrantup.com/
+To use with Vagrant, download and install [Vagrant](http://www.vagrantup.com/)
 
     $ gem install sprinkle
 
