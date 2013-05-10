@@ -27,12 +27,13 @@ require "#{path}/packages/mysql"
 require "#{path}/packages/passenger_standalone"
 require "#{path}/packages/rails_development"
 require "#{path}/packages/memcache"
+require "#{path}/packages/php"
 
 # What we're installing to your server
 # Take what you want, leave what you don't
 # Build up your own and strip down your server until you get it right. 
 policy :stack, :roles => :app do
-  # requires :apt_update             # For first run
+  requires :apt_update             # For first run
 
   requires :essentials               # Standard utilities, build-essentials, git, etc.
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby

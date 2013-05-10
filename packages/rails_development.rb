@@ -1,14 +1,3 @@
-package :make_sites_path do
-  user fetch(:user)
-  
-  runner "mkdir -p /var/www/sites"
-  runner "chown #{user}:#{user} /var/www/sites"
-
-  # verify do
-  #   has_path "/var/www/sites/"
-  # end
-end
-
 package :create_rails_mysql_user do
   db_user "rails"
   db_password "password"
@@ -27,6 +16,5 @@ package :rails_development, :provides => :web_development do
   description 'Setup the box for web application development'
   
   requires :rails_common_dependencies
-  requires :make_sites_path
   requires :create_rails_mysql_user
 end
