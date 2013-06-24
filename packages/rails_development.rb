@@ -1,5 +1,5 @@
 package :make_sites_path do
-  user fetch(:user)
+  user = fetch(:user)
   
   runner "mkdir -p /var/www/sites"
   runner "chown #{user}:#{user} /var/www/sites"
@@ -10,9 +10,9 @@ package :make_sites_path do
 end
 
 package :create_rails_mysql_user do
-  db_user "rails"
-  db_password "password"
-  db_names ["app_development", "app_test"]
+  db_user = "rails"
+  db_password = "password"
+  db_names = ["app_development", "app_test"]
 
   db_names.each do |db_name|
     runner "mysql -uroot -e \"create database #{db_name}; grant all on #{db_name}.* to #{db_user}@localhost identified by '#{db_password}';\""
