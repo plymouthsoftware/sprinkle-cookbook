@@ -40,4 +40,11 @@ Vagrant::Config.run do |config|
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
   config.vm.share_folder "app", "/var/www/sites/app", "../app"
+
+  # Provision Vagrant using sprinkle. This requires the Vagrant Sprinkle plugin.
+  # Install using vagrant plugin install vagrant-sprinkle
+  # config.vm.provision(:sprinkle) do |sprinkle|
+  #   sprinkle.script = 'config/install.rb'
+  #   sprinkle.cloud = true
+  # end
 end
