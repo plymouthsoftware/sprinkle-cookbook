@@ -40,6 +40,6 @@ policy :stack, :roles => :app do
   requires :webserver                # Apache or Nginx
   requires :appserver                # Passenger (standalone)
   requires :cache_server             # Local cache server, currently Memcache
-  requires :web_development          # Web Development (Rails)
   requires :database                 # MySQL or Postgres, also installs rubygems for each
+  requires :web_development          # Web Development (Rails)
 end
