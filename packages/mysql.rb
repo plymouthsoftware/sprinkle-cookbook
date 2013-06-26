@@ -7,12 +7,13 @@ package :install_mysql do
   end
 end
 
-# package :install_mysql_ruby do
-#   description 'Ruby MySQL database driver'
+package :install_mysql_dev do
+  description 'Ruby MySQL database driver'
   
-#   apt %w{libmysqlclient-dev libmysql-ruby}
-# end
+  apt %w{libmysqlclient-dev}
+end
 
 package :mysql, :provides => :database do
   requires :install_mysql
+  requires :install_mysql_dev
 end

@@ -43,10 +43,15 @@ package :rails_common_dependencies do
   apt "libxml2-dev libxslt1-dev libapache2-mod-xsendfile imagemagick"
 end
 
+package :ruby_mysql_dependencies, :provides => :ruby_database_dependencies do
+  apt "libmysql-ruby"
+end
+
 package :rails_development, :provides => :web_development do
   description 'Setup the box for web application development'
   
   requires :rails_common_dependencies
+  requires :ruby_database_dependencies
   requires :make_sites_path
   requires :create_rails_mysql_user
   requires :create_rails_databases
