@@ -1,6 +1,8 @@
 package :install_mysql do
   description 'MySQL Database Server and development libraries'
-  apt 'mysql-server mysql-client'
+  apt 'mysql-server mysql-client' do
+    post "service mysql start"
+  end
 
   verify do
     has_executable "mysqladmin"
