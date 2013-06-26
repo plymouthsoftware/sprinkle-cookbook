@@ -31,7 +31,7 @@ Vagrant::Config.run do |config|
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  config.vm.forward_port 22, 2222
+  # config.vm.forward_port 22, 2222
   config.vm.forward_port 80, 8080
   config.vm.forward_port 3000, 3030
 
@@ -39,5 +39,13 @@ Vagrant::Config.run do |config|
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
-  config.vm.share_folder "app", "/var/www/sites/app", "../app", :owner => 'www-data', :group => 'www-data'
+  config.vm.share_folder "app", "/var/www/sites/app", "../app"
+  # config.vm.share_folder "app", "/var/www/sites/app", "../app", :owner => 'www-data', :group => 'www-data'
+
+  # Provision Vagrant using sprinkle. This requires the Vagrant Sprinkle plugin.
+  # Install using vagrant plugin install vagrant-sprinkle
+  # config.vm.provision(:sprinkle) do |sprinkle|
+  #   sprinkle.script = 'config/install.rb'
+  #   sprinkle.cloud = true
+  # end
 end

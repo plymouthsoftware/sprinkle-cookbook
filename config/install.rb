@@ -28,12 +28,13 @@ require "#{path}/packages/passenger_standalone"
 require "#{path}/packages/rails_development"
 require "#{path}/packages/memcache"
 require "#{path}/packages/php"
+require "#{path}/packages/dev_essentials"
 
 # What we're installing to your server
 # Take what you want, leave what you don't
 # Build up your own and strip down your server until you get it right. 
 policy :stack, :roles => :app do
-  requires :apt_update             # For first run
+  # requires :apt_update               # For first run
 
   requires :essentials               # Standard utilities, build-essentials, git, etc.
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby
@@ -41,5 +42,6 @@ policy :stack, :roles => :app do
   requires :appserver                # Passenger (standalone)
   requires :cache_server             # Local cache server, currently Memcache
   requires :database                 # MySQL or Postgres, also installs rubygems for each
-  requires :web_development          # Web Development (Rails)
+  requires :web_development          # Web Development (Rails) 
+  requires :dev_essentials           # Handy dev tools: vim, ack-grep, etc.
 end

@@ -1,6 +1,6 @@
 package :install_rbenv do
   description 'Ruby RBEnv'
-  user fetch(:user)
+  user = fetch(:user)
 
   runner  "sudo -u #{user} -i git clone git://github.com/sstephenson/rbenv.git /home/#{user}/.rbenv"
   runner "sudo -u #{user} -i git clone git://github.com/sstephenson/ruby-build.git /home/#{user}/.rbenv/plugins/ruby-build"
@@ -18,7 +18,7 @@ end
 package :install_ruby do
   requires :install_rbenv
   version fetch(:ruby_version)
-  user fetch(:user)
+  user = fetch(:user)
 
   runner "sudo -u #{user} -i rbenv install #{version}"
   runner "sudo -u #{user} -i rbenv rehash"
@@ -30,6 +30,7 @@ end
 
 package :rbenv_bundler do
   requires :use_rbenv
+  user = fetch(:user)
 
   runner "sudo -u #{user} -i gem install bundler"
   runner "sudo -u #{user} -i rbenv rehash"
@@ -43,7 +44,7 @@ package :use_rbenv do
   requires :install_ruby
 
   version fetch(:ruby_version)
-  user fetch(:user)
+  user = fetch(:user)
 
   runner "sudo -u #{user} -i rbenv rehash"
   runner "sudo -u #{user} -i rbenv global #{version}"
@@ -55,7 +56,7 @@ package :install_rubygems do
 
   description 'Ruby Gems Package Management System'
   version '1.8.25'
-  user fetch(:user)
+  user = fetch(:user)
 
   source "http://production.cf.rubygems.org/rubygems/rubygems-#{version}.tgz" do
     custom_install "sudo -u #{user} -i ruby setup.rb"
@@ -73,7 +74,7 @@ package :install_bundler do
   requires :use_rbenv
   requires :install_rubygems
 
-  user fetch(:user)
+  user = fetch(:user)
 
   runner "sudo -u #{user} -i gem install bundler --no-rdoc --no-ri"
   runner "sudo -u #{user} -i rbenv rehash"

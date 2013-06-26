@@ -19,6 +19,10 @@ Edit `config/deploy.rb` to your requirements:
 
     $ cp config/deploy.rb.example config/deploy.rb
 
+Edit `Vagrantfile` to your requirements:
+
+    $ cp Vagrantfile.example Vagrantfile
+
 Create your vagrant box and run the Sprinkle cookbook
 
     $ vagrant up   

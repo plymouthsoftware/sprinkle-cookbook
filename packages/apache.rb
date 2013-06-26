@@ -1,11 +1,11 @@
 package :make_sites_path do
-  user fetch(:user)
+  user = fetch(:user)
   
   runner "mkdir -p /var/www/sites"
   runner "chown #{user}:#{user} /var/www/sites"
 
   verify do
-    has_path "/var/www/sites/"
+    test "-d /var/www/sites"
   end
 end
 

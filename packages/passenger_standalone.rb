@@ -1,6 +1,6 @@
 package :passenger_standalone, :provides => :appserver do
   description 'Passenger Standalone'
-  user fetch(:user)
+  user = fetch(:user)
 
   requires :use_rbenv
 
