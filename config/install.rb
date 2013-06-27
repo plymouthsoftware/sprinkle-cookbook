@@ -32,8 +32,8 @@ require "#{path}/packages/dev_essentials"
 # What we're installing to your server
 # Take what you want, leave what you don't
 # Build up your own and strip down your server until you get it right. 
-policy :stack, :roles => :app do
-  requires :apt_update               # For first run
+policy :stack, :roles => :rails_dev do
+  # requires :apt_update               # For first run
 
   requires :essentials               # Standard utilities, build-essentials, git, etc.
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby
@@ -43,4 +43,15 @@ policy :stack, :roles => :app do
   requires :database                 # MySQL or Postgres, also installs rubygems for each
   requires :web_development          # Web Development (Rails)
   requires :dev_essentials           # Handy dev tools: vim, ack-grep, etc.
+end
+
+policy :stack, :roles => :wordpress_dev do
+  # requires :apt_update               # For first run
+  # requires :essentials               # Standard utilities, build-essentials, git, etc.
+  
+  # TODO: Add Wordpress-relevant packages here (php, mysql, apache, etc.)
+  # requires :php
+  # requires :webserver
+  # requires :database
+  # requires :dev_essentials
 end

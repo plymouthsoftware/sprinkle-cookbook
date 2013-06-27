@@ -4,31 +4,43 @@ A set of recipes and configurations for configuring servers with [Sprinkle](http
 
 ## Installation
 
-To use with Vagrant, download and install [Vagrant](http://www.vagrantup.com/)
+1. To use with Vagrant, download and install [Vagrant](http://www.vagrantup.com/)
 
-    $ gem install sprinkle
+        $ gem install sprinkle
 
-    $ mkdir myproject
-    $ cd myproject
-    $ mkdir app # This folder is shared to the VM as /var/www/sites/app in Vagrantfile
+        $ mkdir myproject
+        $ cd myproject
+        $ mkdir app # This folder is shared to the VM as /var/www/sites/app in Vagrantfile
 
-    $ git clone git@github.com:plymouthsoftware/sprinkle-cookbook.git
-    $ cd sprinkle-cookbook
+        $ git clone git@github.com:plymouthsoftware/sprinkle-cookbook.git
+        $ cd sprinkle-cookbook
 
-Edit `config/deploy.rb` to your requirements:
+2. Edit `config/deploy.rb` to your requirements:
 
-    $ cp config/deploy.rb.example config/deploy.rb
+        $ cp config/deploy.rb.example config/deploy.rb
 
-Edit `Vagrantfile` to your requirements:
+    For example, change the server `role` to the policy stack you want to use, e.g:
 
-    $ cp Vagrantfile.example Vagrantfile
+        # config/deploy.rb
+        role :rails_dev, 'localhost:2222'
 
-Create your vagrant box and run the Sprinkle cookbook
+3. Edit `Vagrantfile` to your requirements:
 
-    $ vagrant up   
-    $ sprinkle -c -s config/install.rb
+        $ cp Vagrantfile.example Vagrantfile
+
+4. Create your vagrant box and run your desired Sprinkle cookbook
+
+        $ vagrant up
+        $ sprinkle -c -s config/install.rb --only=rails_dev # The role you declared in deploy.rb
     
+## Policies 
+
+### Rails Development
+
 Log into your new Virtual Machine and configure a simple Rails app
+
+    $ vagrant up
+    $ sprinkle -c -s config/install_rails_dev.rb
     $ vagrant ssh 
 
     (vm) $ cd /var/www/sites

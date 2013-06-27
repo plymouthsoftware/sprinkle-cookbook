@@ -8,7 +8,11 @@ package :install_mysql do
 end
 
 package :start_mysql do
-  runner "service mysql start"
+  runner "service mysql restart"
+
+  # verify do
+  #   has_running_service "[[ `service mysql status` =~ start ]]"
+  # end
 end
 
 package :install_mysql_dev do

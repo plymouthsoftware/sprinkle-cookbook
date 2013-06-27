@@ -1,4 +1,6 @@
-role :app, "hostname:ssh_port"
+role :rails_dev, "hostname:ssh_port"
+# role :wordpress_dev, "hostname:ssh_port"
+# role :rails_production, "hostname:ssh_port"
 
 # Fill user in - if remote user is different to your local user
 # set :user, 'vagrant'
