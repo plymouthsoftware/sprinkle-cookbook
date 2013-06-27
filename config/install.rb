@@ -33,7 +33,7 @@ require "#{path}/packages/dev_essentials"
 # Take what you want, leave what you don't
 # Build up your own and strip down your server until you get it right. 
 policy :stack, :roles => :rails_dev do
-  # requires :apt_update               # For first run
+  requires :apt_update               # For first run
 
   requires :essentials               # Standard utilities, build-essentials, git, etc.
   requires :ruby_rbenv               # Install rbenv, ruby-build and ruby
