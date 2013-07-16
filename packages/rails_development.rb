@@ -13,6 +13,26 @@ package :make_sites_path do
   # end
 end
 
+package :rails_32, :provides => :rails do
+  user = fetch(:user)
+  description "Install Rails 3.2.12 gem"
+  runner "sudo -u #{user} -i gem install rails --no-rdoc --no-ri --version=3.2.13"
+
+  verify do
+    @commands << "sudo -u #{user} -i rails -v | grep 3.2.13"
+  end
+end
+
+package :rails_40, :provides => :rails do
+  user = fetch(:user)
+  description "Install Rails 4.0.0 gem"
+  runner "sudo -u #{user} -i gem install rails --no-rdoc --no-ri --version=4.0.0"
+
+  verify do
+    @commands << "sudo -u #{user} -i rails -v | grep 4.0.0"
+  end
+end
+
 package :create_rails_mysql_user do
   db_user = DB_USER
   db_password = DB_PASS
@@ -52,6 +72,7 @@ package :rails_development, :provides => :web_development do
   
   requires :rails_common_dependencies
   requires :ruby_database_dependencies
+  requires :rails
   requires :make_sites_path
   requires :create_rails_mysql_user
   requires :create_rails_databases
