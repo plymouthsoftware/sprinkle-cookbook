@@ -40,12 +40,10 @@ A set of recipes and configurations for configuring servers with [Sprinkle](http
 Log into your new Virtual Machine and configure a simple Rails app
 
     $ vagrant up
-    $ sprinkle -c -s config/install_rails_dev.rb
+    $ sprinkle -c -s config/install.rb
     $ vagrant ssh 
 
-    (vm) $ cd /var/www/sites
-    (vm) $ gem install rails --no-ri --no-rdoc
-    (vm) $ rbenv rehash
+    (vm) $ cd ~/app
     (vm) $ rails new app --database mysql 
     (vm) $ cd app
     (vm) $ bundle install # Probably already run by rails new
@@ -53,4 +51,12 @@ Log into your new Virtual Machine and configure a simple Rails app
     (vm) $ bundle exec rake db:migrate
     (vm) $ bundle exec rails server
 
-On host machine, visit http://localhost:3030/users in your browser
+On host machine, visit http://192.168.33.11/users in your browser
+
+## Changes
+
+### 17 July 2013
+
+* Changed to use Vagrant v2 configuration.
+* Switched from public_network to private (host-only) network (default IP is `192.168.33.100`)
+* Updated default app path to /home/vagrant/app rather than /var/www/apps/.
