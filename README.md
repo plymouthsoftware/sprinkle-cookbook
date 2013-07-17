@@ -51,7 +51,7 @@ Log into your new Virtual Machine and configure a simple Rails app
     (vm) $ bundle exec rake db:migrate
     (vm) $ bundle exec rails server
 
-On host machine, visit http://192.168.33.11/users in your browser
+On host machine, visit http://192.168.33.100/users in your browser
 
 ## Changes
 
