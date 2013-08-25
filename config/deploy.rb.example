@@ -6,7 +6,7 @@ role :rails_dev, "hostname:ssh_port"
 # set :user, 'vagrant'
 # set :password, 'vagrant'
 
-set :ruby_version, '1.9.3-p286'
+set :ruby_version, '2.0.0-p195'
 
 # Make capistrano variables accessible to Sprinkle
 # https://github.com/crafterm/sprinkle/issues/57
